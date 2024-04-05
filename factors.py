@@ -1,15 +1,14 @@
 #!/usr/bin/python3
 import sys
-from math import sqrt
-
 
 with open(sys.argv[1], "r") as f:
 	for num in f.readlines():
 		num = int(num)
-		factor1 = 2
-		while factor1 < int(sqrt(num)) + 1:
-			if (num % factor1 == 0):
-				factor2 = num // factor1
-				print("{:d}={:d}*{:d}".format(num, factor2, factor1))
+		if num % 2 == 0:
+			print("{}={}*{}".format(num, num // 2, 2))
+			continue
+
+		for i in range(3, num // 2 + 1, 2):
+			if (num % i == 0):
+				print("{}={}*{}".format(num, num // i, i))
 				break
-			factor1 += 1

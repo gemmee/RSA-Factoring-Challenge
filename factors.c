@@ -10,7 +10,11 @@ int main(int ac, char *av[])
 	{
 		factor = 2;
 		printf("%llu=", i);
-		while (factor < (i / 2) + 1)
+		/*this code has a logical error*/
+		/*it can't really handle big numbers*/
+		/*so I will get back to it and make it work*/
+		/*because it's much faster than the python code*/
+		while (factor < (unsigned long long)(i / 2) + 1)
 		{
 			if (!(i % factor))
 			{
