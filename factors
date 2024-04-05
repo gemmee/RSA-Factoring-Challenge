@@ -1,14 +1,7 @@
-#!/usr/bin/python3
-import sys
-
-with open(sys.argv[1], "r") as f:
-	for num in f.readlines():
-		num = int(num)
-		if num % 2 == 0:
-			print("{}={}*{}".format(num, num // 2, 2))
-			continue
-
-		for i in range(3, num // 2 + 1, 2):
-			if (num % i == 0):
-				print("{}={}*{}".format(num, num // i, i))
-				break
+#!/bin/bash
+FILE=$1
+while read NUMBERS
+do
+	factors=($(factor $NUMBERS))
+	echo "$NUMBERS=$(($NUMBERS/${factors[1]}))*${factors[1]}"
+done < $FILE
