@@ -12,7 +12,7 @@ def factorize1(num_list):
 		for i in range(3, num//2 + 1, 2):
 			if (num % i == 0):
 				factor2 = num // i
-				print(f"{num} = {factor2} * {i}")
+				print(f"{num}={factor2}*{i}")
 				break
 
 if len(sys.argv) != 2:
