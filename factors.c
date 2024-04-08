@@ -3,18 +3,33 @@
 int main(int ac, char *av[])
 {
 	FILE *f = fopen(av[1], "r");
-	unsigned long long int other, factor, i = 0;
-	
-	fscanf(f, "%llu", &i);
+	unsigned long long int other, factor, number = 0;
+	int length;
+	char *str;
+
+	fscanf(f, "%llu", &number);
+	length = snprintf(NULL, 0, "%llu", number);
 	while (!feof(f))
 	{
 		factor = 2;
-		printf("%llu=", i);
-		/*this code has a logical error*/
-		/*it can't really handle big numbers*/
-		/*so I will get back to it and make it work*/
-		/*because it's much faster than the python code*/
-		while (factor < (unsigned long long)(i / 2) + 1)
+		if (length > 15)
+		{
+			str = malloc(length + 1);
+			snprintf(str, length + 1, "%llu", number);
+			repeat:
+			answer = long_division(str, factor);
+			if ((long_multiplication(answer, factor) == str))
+			{
+				printf("%s=%s*%s\n", str, answer, factor);
+				break;
+			}
+			factor++;
+			fscanf(f, 
+	
+		}
+		
+		printf("%llu=", number);
+		while (factor < number)
 		{
 			if (!(i % factor))
 			{
